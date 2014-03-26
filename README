@@ -1,0 +1,6 @@
+Varje ruta i luffarschacksbrädet består av ett mindre bräde och för att lägga på en av rutorna på det stora brädet måste men vinna det lilla brädet på rutan. 
+Man turas om med att lägga på rutorna i de små brädena.
+Man får bara lägga på det lilla bräde som motsvarar den ruta på det lilla brädet som motståndaren lade på turen innan. Alltså om motståndaren lägger längst upp i högra hörnet måste man lägga någonstans på brädet längst upp i högra hörnet.
+
+Man trycker på space när man vill att AI:n ska lägga.
+Vilket litet bräde man kan lägga på visas i rött.
