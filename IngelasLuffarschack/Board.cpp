@@ -38,11 +38,11 @@ Board::Board(int pX, int pY, int sX, int sY, int depth):Tile(pX, pY, sX, sY)
 	/*definiera alla rader*/
 	if(allPossibleRows.empty())
 	{
-		/*vågräta*/
+		/*vï¿½grï¿½ta*/
 		allPossibleRows.push_back(Row(0, 1, 2));
 		allPossibleRows.push_back(Row(3, 4, 5));
 		allPossibleRows.push_back(Row(6, 7, 8));
-		/*lodräta*/
+		/*lodrï¿½ta*/
 		allPossibleRows.push_back(Row(0, 3, 6));
 		allPossibleRows.push_back(Row(1, 4, 7));
 		allPossibleRows.push_back(Row(2, 5, 8));
@@ -69,7 +69,7 @@ Board::Board(const Board& b):Tile(b.posX, b.posY, b.sizeX, b.sizeY)
 	}
 	owner=b.owner;
 }
-Board Board::makeResultOfMove( MoveInfo& move)//om man kan göra så att denna håller på med referenser istället för att returnera en hel board vore det bra
+Board Board::makeResultOfMove( MoveInfo& move)//om man kan gï¿½ra sï¿½ att denna hï¿½ller pï¿½ med referenser istï¿½llet fï¿½r att returnera en hel board vore det bra
 {
 	Board boardAfterMove(*this);
 	boardAfterMove.makeMove(move, 0);
@@ -232,13 +232,13 @@ void Board::makeMove(MoveInfo& move, int depth)
 		}
 		int activatedBoardIndex=move.getChangedTile()[move.getChangedTile().size()-1];//returnerar sista talet i changedTile
 
-		if(!tiles[activatedBoardIndex]->activateBoard())//försöker aktivera det bräde som ska aktiveras om det inte är taget
+		if(!tiles[activatedBoardIndex]->activateBoard())//fï¿½rsï¿½ker aktivera det brï¿½de som ska aktiveras om det inte ï¿½r taget
 		{
 			bool successfullActivation=false;
-			/*om det är taget och inte blir aktiverat...*/
+			/*om det ï¿½r taget och inte blir aktiverat...*/
 			for(int i=0; i<9; ++i)
 			{
-				tiles[i]->activateBoard();//aktivera alla bräden som går
+				tiles[i]->activateBoard();//aktivera alla brï¿½den som gï¿½r
 			}
 		}
 	}
@@ -304,7 +304,7 @@ void Board::deactivateBoard()
 	activated=false;
 }
 
-int Board::determineValueForAI(Tile::Owner sign, int depth)//misstänkt
+int Board::determineValueForAI(Tile::Owner sign, int depth)//misstï¿½nkt
 {
 	Tile::Owner opponent;
 	if(sign==Tile::CROSS)
@@ -326,16 +326,16 @@ int Board::determineValueForAI(Tile::Owner sign, int depth)//misstänkt
 	int valueOfBoard=0;
 	if(owner==Tile::NONE)
 	{
-		/*gå igenom alla raden*/
+		/*gï¿½ igenom alla raden*/
 		for(unsigned int i=0; i<allPossibleRows.size(); ++i)
 		{
 			int rowElement1=allPossibleRows[i].element1;
 			int rowElement2=allPossibleRows[i].element2;
 			int rowElement3=allPossibleRows[i].element3;
-			/*om denna raden går att ta*/
+			/*om denna raden gï¿½r att ta*/
 			if(!(tiles[rowElement1]->getOwner()==opponent || tiles[rowElement2]->getOwner()==opponent || tiles[rowElement3]->getOwner()==opponent))
 			{
-				/*räkna hur många tiles i raden som är tagna*/
+				/*rï¿½kna hur mï¿½nga tiles i raden som ï¿½r tagna*/
 				int numberOfTakenTiles=0;
 				if(tiles[rowElement1]->getOwner()==sign)
 				{
@@ -362,7 +362,7 @@ int Board::determineValueForAI(Tile::Owner sign, int depth)//misstänkt
 					valueOfBoard+= POINTS_FOR_TWO;
 				}
 			}
-			/*om denna raden kan tas av motståndaren*/
+			/*om denna raden kan tas av motstï¿½ndaren*/
 			else if(!(tiles[rowElement1]->getOwner()==sign || tiles[rowElement2]->getOwner()==sign || tiles[rowElement3]->getOwner()==sign))
 			{
 				int numberOfTakenTiles=0;
@@ -412,16 +412,16 @@ int Board::determineValueForAI(Tile::Owner sign, int depth)//misstänkt
 	}
 	else
 	{
-		/*om man inte har stöd så här långt ner*/
+		/*om man inte har stï¿½d sï¿½ hï¿½r lï¿½ngt ner*/
 		assert(false);
 	}
 	if(owner==Tile::NONE)
 	{
 		return valueOfBoard+valueOfTiles;
 	}
-	else//ignorera tiles om brädet är vunnet
+	else//ignorera tiles om brï¿½det ï¿½r vunnet
 	{
 		return valueOfBoard;
 	}
 }
-
+ 
